@@ -9,6 +9,8 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.SimpleRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Jaguar;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -17,7 +19,13 @@ import edu.wpi.first.wpilibj.SimpleRobot;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class RobotTemplate extends SimpleRobot {
+public class Team2503RobotMain extends SimpleRobot {
+    
+    static final int ForwardAxis = 1;
+    static final int TurnAxis = 4;
+    
+    Joystick GamePad;
+    
     /**
      * This function is called once each time the robot enters autonomous mode.
      */
@@ -29,6 +37,19 @@ public class RobotTemplate extends SimpleRobot {
      * This function is called once each time the robot enters operator control.
      */
     public void operatorControl() {
+        while(isOperatorControl()){
+            
+            JoyPadDrive(GamePad.getRawAxis(ForwardAxis), GamePad.getRawAxis(TurnAxis));
+            
+        }
+    }
+    
+    private void JoyPadDrive(double forward, double turn){
+
+
+
 
     }
 }
+
+
