@@ -28,7 +28,7 @@ public class Team2503RobotMain extends SimpleRobot {
     
     static final int LeftJag1PWMSlot = 1;
     static final int LeftJag2PWMSlot = 2;
-    static final int RightJag1PWMSlot = 3;
+    static final int RightJag1PWMSlot = 6;
     static final int RightJag2PWMSlot = 4;
     
     static final int ForwardAxis = 1;
