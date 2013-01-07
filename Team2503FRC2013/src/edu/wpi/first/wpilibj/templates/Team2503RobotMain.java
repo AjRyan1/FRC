@@ -58,6 +58,8 @@ public class Team2503RobotMain extends SimpleRobot {
         rightJag1 = new Jaguar(RightJag1PWMSlot);
         rightJag2 = new Jaguar(RightJag2PWMSlot);
         
+        
+        
     }
     
     public void autonomous() {
@@ -77,7 +79,11 @@ public class Team2503RobotMain extends SimpleRobot {
     }
     
     private void JoyPadDrive(double forward, double turn){
-
+        
+        leftJag1.set(forward - turn);
+        leftJag2.set(forward - turn);
+        rightJag1.set(forward + turn);
+        rightJag2.set(forward + turn);
 
     }
     
