@@ -93,6 +93,6 @@ public class Team2503RobotMain extends SimpleRobot {
     private void TypicalJoyPadDrive(){
         JoyPadDrive(gamePad.getRawAxis(ForwardAxis), gamePad.getRawAxis(TurnAxis));
     }
-        }
+}
 
 
