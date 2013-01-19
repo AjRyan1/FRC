@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 
 /**
  *
- * @author Alex
+ * @author mitch
  */
 public class VisionAnalysis {
     
@@ -36,7 +36,7 @@ public class VisionAnalysis {
     final int X_EDGE_LIMIT = 40;
     final int Y_EDGE_LIMIT = 60;
     
-    final int X_IMAGE_RES = 320;          //X Image resolution in pixels, should be 160, 320 or 640
+    final int X_IMAGE_RES = 640;          //X Image resolution in pixels, should be 160, 320 or 640
     final double VIEW_ANGLE = 43.5;       //Axis 206 camera
 //    final double VIEW_ANGLE = 48;       //Axis M1011 camera
     
