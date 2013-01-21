@@ -6,7 +6,7 @@ package edu.wpi.first.wpilibj.templates;
 
 /**
  *
- * @author Alex
+ * @author mitch
  */
  public class Scores {
         double rectangularity;
