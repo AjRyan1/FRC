@@ -7,8 +7,9 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Relay;
 
-
+        
 public class Team2503RobotMain extends SimpleRobot {
     
     //CONSTANTS BEGIN HERE
@@ -21,15 +22,17 @@ public class Team2503RobotMain extends SimpleRobot {
     static final int RightJag2PWMSlot = 4;
     static final int ForwardAxis = 1;
     static final int TurnAxis = 4;
-    
+    static final int rel1kforward = 1;
+    static final int robotDrive = 1;
     
     //CONSTANTS END HERE
+    
     
     //ROBOT SYSTEMS AND VARIABLES START HERE
     
     Joystick gamePad;
     Jaguar leftJag1, leftJag2, rightJag1, rightJag2;
-    
+    Relay rel1;
     
     //ROBOT SYSTEMS AND VARIABLES END HERE
     
@@ -44,14 +47,34 @@ public class Team2503RobotMain extends SimpleRobot {
         leftJag2 = new Jaguar(LeftJag2PWMSlot);
         rightJag1 = new Jaguar(RightJag1PWMSlot);
         rightJag2 = new Jaguar(RightJag2PWMSlot);
-        
+        rel1 = new Relay(rel1kforward);
     }        
 
    
     
     public void autonomous() {
-        
+
+   robotDrive.drive(0.5, 0.0);
+    Timer.delay(2.0);
+    robotDrive.drive(0.0, 0.0);
+    Timer.delay(2.0);
+    robotDrive.drive(0.75);  
+      
     }
+
+        
+        
+        
+        //for (int i = 0; i < 4; i++)
+
+//Timer.delay(2.0);
+ 
+
+//leftJag1.(0.75);
+//rightJag1.(0.5);
+
+
+    
 
     
     public void operatorControl() {
@@ -69,7 +92,7 @@ public class Team2503RobotMain extends SimpleRobot {
         leftJag2.set(forward - turn);
         rightJag1.set(forward + turn);
         rightJag2.set(forward + turn);
-
+        
     }
     
     private void TypicalJoyPadDrive(){
