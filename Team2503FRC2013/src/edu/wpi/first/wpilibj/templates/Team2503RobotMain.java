@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Relay;
-
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Ultrasonic;
         
 public class Team2503RobotMain extends SimpleRobot {
     
@@ -33,7 +34,7 @@ public class Team2503RobotMain extends SimpleRobot {
     Joystick gamePad;
     Jaguar leftJag1, leftJag2, rightJag1, rightJag2;
     Relay rel1;
-    
+    RobotDrive fish;
     //ROBOT SYSTEMS AND VARIABLES END HERE
     
     
@@ -47,18 +48,18 @@ public class Team2503RobotMain extends SimpleRobot {
         leftJag2 = new Jaguar(LeftJag2PWMSlot);
         rightJag1 = new Jaguar(RightJag1PWMSlot);
         rightJag2 = new Jaguar(RightJag2PWMSlot);
-        rel1 = new Relay(rel1kforward);
+       
     }        
 
    
     
     public void autonomous() {
 
-   robotDrive.drive(0.5, 0.0);
+    fish.drive(0.5, 0.0);
     Timer.delay(2.0);
-    robotDrive.drive(0.0, 0.0);
+    fish.drive(0.0, 0.0);
     Timer.delay(2.0);
-    robotDrive.drive(0.75);  
+    fish.drive(0.0, 0.75);  
       
     }
 
