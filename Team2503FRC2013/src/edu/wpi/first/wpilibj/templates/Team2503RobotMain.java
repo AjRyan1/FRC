@@ -21,6 +21,7 @@ public class Team2503RobotMain extends SimpleRobot {
     static final int LeftJag2PWMSlot = 2;
     static final int RightJag1PWMSlot = 3;
     static final int RightJag2PWMSlot = 4;
+    static final int CenterJag1PWMSlot = 5;
     static final int ForwardAxis = 1;
     static final int TurnAxis = 4;
     static final int rel1kforward = 1;
@@ -35,7 +36,7 @@ public class Team2503RobotMain extends SimpleRobot {
     //ROBOT SYSTEMS AND VARIABLES START HERE
     
     Joystick gamePad;
-    Jaguar leftJag1, leftJag2, rightJag1, rightJag2;
+    Jaguar leftJag1, leftJag2, rightJag1, rightJag2, centerJag1;
     Relay rel1;
     
     DigitalOutput sonarOnOff;   //This is the object for controlling the output from the sidecar - set high to sample, low to turn off
@@ -54,6 +55,7 @@ public class Team2503RobotMain extends SimpleRobot {
         leftJag2 = new Jaguar(LeftJag2PWMSlot);
         rightJag1 = new Jaguar(RightJag1PWMSlot);
         rightJag2 = new Jaguar(RightJag2PWMSlot);
+        centerJag1 = new Jaguar (CenterJag1PWMSlot);
         rel1 = new Relay(rel1kforward);
         
         sonarOnOff = new DigitalOutput(digitalOutputOnOffPort);
