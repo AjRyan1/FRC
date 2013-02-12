@@ -28,6 +28,8 @@ public class Team2503RobotMain extends SimpleRobot {
     static final int JoystickButton1 = 5;
     static final int rel1kforward = 1;
     
+    static final int Button1 = 2;
+    
     
     static final int analogSensorPort = 1; //For now, use port 1 on the analog module to receive analog data. goes to pin 3 on sensor
     static final int digitalOutputOnOffPort = 1; //use port 1 on the I/O section of the breakout to control on/off - goes to pin 4 on sensor
@@ -41,7 +43,7 @@ public class Team2503RobotMain extends SimpleRobot {
     Joystick gamePad;
     Jaguar leftJag1, leftJag2, rightJag1, rightJag2, centerJag1;
     Relay rel1; // ignore this one
-    JoystickButton Button1;
+    //JoystickButton Button1;
     DigitalOutput sonarOnOff;   //This is the object for controlling the output from the sidecar - set high to sample, low to turn off
     AnalogChannel sonarDistance; //This is the object for reading the sensor from the analog breakout on the cRio.
     
@@ -60,7 +62,7 @@ public class Team2503RobotMain extends SimpleRobot {
         rightJag2 = new Jaguar(RightJag2PWMSlot);
         centerJag1 = new Jaguar(CenterJag1PWMSlot);
         rel1 = new Relay(rel1kforward);
-        JoystickButton1 = new JoystickButton(CenterJag1PWMSlot);
+   
         sonarOnOff = new DigitalOutput(digitalOutputOnOffPort);
         sonarDistance = new AnalogChannel(analogSensorPort);
     }        
@@ -106,7 +108,7 @@ public class Team2503RobotMain extends SimpleRobot {
              */
             
             if(feetDistance < 2.0){ isBeyond2Feet = false; } //if closer than 2 feet, stop. If not, keep going
-            else{ JoyPadDrive(0.3, 0.0, gamePad.getRawButton(Button1));
+            else{ JoyPadDrive(0.3, 0.0, gamePad.getRawButton(TurnAxis));
             }
           Timer.delay(0.005);
             
@@ -149,7 +151,13 @@ public class Team2503RobotMain extends SimpleRobot {
         leftJag2.set(forward - turn);
         rightJag1.set(forward + turn);
         rightJag2.set(forward + turn);
-        centerJag1.set(forward + turn);
+        
+        if(rawButton){
+            centerJag1.set(1.0);
+        }
+        else {
+            centerJag1.set(0.0);
+        }
         
     }
     
