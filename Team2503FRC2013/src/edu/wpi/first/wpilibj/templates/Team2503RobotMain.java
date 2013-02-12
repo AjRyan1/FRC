@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
         
 public class Team2503RobotMain extends SimpleRobot {
@@ -24,7 +25,7 @@ public class Team2503RobotMain extends SimpleRobot {
     static final int CenterJag1PWMSlot = 5;
     static final int ForwardAxis = 1;
     static final int TurnAxis = 4;
-    static final int Button1 = 5;
+    static final int JoystickButton1 = 5;
     static final int rel1kforward = 1;
     
     
@@ -40,7 +41,7 @@ public class Team2503RobotMain extends SimpleRobot {
     Joystick gamePad;
     Jaguar leftJag1, leftJag2, rightJag1, rightJag2, centerJag1;
     Relay rel1; // ignore this one
-    
+    JoystickButton Button1;
     DigitalOutput sonarOnOff;   //This is the object for controlling the output from the sidecar - set high to sample, low to turn off
     AnalogChannel sonarDistance; //This is the object for reading the sensor from the analog breakout on the cRio.
     
@@ -57,9 +58,9 @@ public class Team2503RobotMain extends SimpleRobot {
         leftJag2 = new Jaguar(LeftJag2PWMSlot);
         rightJag1 = new Jaguar(RightJag1PWMSlot);
         rightJag2 = new Jaguar(RightJag2PWMSlot);
-        centerJag1 = new Jaguar (CenterJag1PWMSlot);
+        centerJag1 = new Jaguar(CenterJag1PWMSlot);
         rel1 = new Relay(rel1kforward);
-        
+        JoystickButton1 = new JoystickButton(CenterJag1PWMSlot);
         sonarOnOff = new DigitalOutput(digitalOutputOnOffPort);
         sonarDistance = new AnalogChannel(analogSensorPort);
     }        
