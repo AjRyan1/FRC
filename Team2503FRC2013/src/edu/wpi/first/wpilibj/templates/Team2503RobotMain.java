@@ -71,57 +71,10 @@ public class Team2503RobotMain extends SimpleRobot {
    
     
     public void autonomous() {
-
-      //Executes JoyPadDrive function, a substitute for the RobotDrive function provided in WPILib
-        
-        //Execute a slow, 1-second ramp to full speed. Hopefully, the robot mass is low enough that the motor power roughly matches the motor speed
-        //i.e. motors are close to free-run level
-        final double ImotorPower = 0.0; //Initial motor power
-        final double FmotorPower = 0.5; //Final motor power
-        final double updateTime = 0.005; //update motor power every 5 mS
-        final double totalRampTime = 1.0; //time to ramp up, 1 sec
-        
-        for(double motorPower = ImotorPower; motorPower < FmotorPower; motorPower += (FmotorPower - ImotorPower) * (updateTime / totalRampTime)){
-            
-            JoyPadDrive(motorPower, 0.0, gamePad.getRawButton(Button1), gamePad.getRawButton(button6));
-            
-            Timer.delay(updateTime);
-        }
         
         
-        //Set wheel power to half forward, for 5 seconds.
-        JoyPadDrive(0.5, 0.0, gamePad.getRawButton(Button1), gamePad.getRawButton(button6));
-        Timer.delay(5.0); 
-        
-        //USING SONAR SENSOR
-        
-        //Lets pretend we have to stop 2 feet from a while we're driving at
-        boolean isBeyond8Feet = true; //lets suppose we're not there yet
-        while(isBeyond8Feet){
-            
-            //Get data from analog output.
-            double analogVolts = sonarDistance.getVoltage();
-            double feetDistance = 1.0; //use dummy value since conversion from volts to distance hasn't happened in code
-            //convert voltage into distance
-            //You should read the datasheet, I don't have the time to do this right now
-            /*
-             * Conversion code here
-             */
-            
-            if(feetDistance < 2.0){ isBeyond8Feet = false; } //if closer than 20 feet, stop. If not, keep going
-            else{ JoyPadDrive(0.3, 0.0, gamePad.getRawButton(Button1), gamePad.getRawButton(button6));
-            }
-          Timer.delay(0.005);
-            
-        }
-            //Stop now
-            JoyPadDrive(0.0, 0.0, gamePad.getRawButton(Button1), gamePad.getRawButton(button6));
-        
-        
-        
-      
     }
-
+    
         
         
         
