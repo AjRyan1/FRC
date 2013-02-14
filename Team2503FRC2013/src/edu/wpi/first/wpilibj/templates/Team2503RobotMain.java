@@ -25,14 +25,14 @@ public class Team2503RobotMain extends SimpleRobot {
     static final int CenterJag1PWMSlot = 6;
     static final int ForwardAxisleft = 1;
     static final int ForwardAxisright = 4;
-    static final int JoystickButton1 = 5;
+   // static final int JoystickButton1 = 5;
     static final int rel1kforward = 1;
     
     static final int Button1 = 2;
     
     static final int button6 = 6;
     
-    static final int analogSensorPort = 1; //For now, use port 1 on the analog module to receive analog data. goes to pin 3 on sensor
+    static final int analogSensorPort = 7; //For now, use port 1 on the analog module to receive analog data. goes to pin 3 on sensor
     static final int digitalOutputOnOffPort = 1; //use port 1 on the I/O section of the breakout to control on/off - goes to pin 4 on sensor
     
     
@@ -43,7 +43,7 @@ public class Team2503RobotMain extends SimpleRobot {
     
     Joystick gamePad;
     Jaguar leftJag1, leftJag2, rightJag1, ShooterJag2, centerJag1;
-    Relay rel1; // ignore this one
+    Relay rel1; 
     //JoystickButton Button1;
     DigitalOutput sonarOnOff;   //This is the object for controlling the output from the sidecar - set high to sample, low to turn off
     AnalogChannel sonarDistance; //This is the object for reading the sensor from the analog breakout on the cRio.
