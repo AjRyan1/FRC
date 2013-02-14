@@ -37,8 +37,8 @@ public class VisionAnalysis {
     final int Y_EDGE_LIMIT = 60;
     
     final int X_IMAGE_RES = 640;          //X Image resolution in pixels, should be 160, 320 or 640
-    final double VIEW_ANGLE = 43.5;       //Axis 206 camera
-//    final double VIEW_ANGLE = 48;       //Axis M1011 camera
+   // final double VIEW_ANGLE = 43.5;       //Axis 206 camera
+  final double VIEW_ANGLE = 48;       //Axis M1011 camera
     
     AxisCamera camera;          // the axis camera object (connected to the switch)
     CriteriaCollection cc;      // the criteria for doing the particle filter operation
