@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Timer;
+
 //import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
         
@@ -62,7 +63,7 @@ public class Team2503RobotMain extends SimpleRobot {
         rightJag1 = new Jaguar(RightJag1PWMSlot);
         ShooterJag2 = new Jaguar(ShooterJag2PWMSlot);
         centerJag1 = new Jaguar(CenterJag1PWMSlot);
-        rel1 = new Relay(rel1kforward);
+       
    
         sonarOnOff = new DigitalOutput(digitalOutputOnOffPort);
         sonarDistance = new AnalogChannel(analogSensorPort);
@@ -72,19 +73,13 @@ public class Team2503RobotMain extends SimpleRobot {
     
     public void autonomous() {
         
-        
+
     }
     
         
         
-        
-        //for (int i = 0; i < 4; i++)
+   
 
-//Timer.delay(2.0);
- 
-
-//leftJag1.(0.75);
-//rightJag1.(0.5);
 
 
     
@@ -99,6 +94,9 @@ public class Team2503RobotMain extends SimpleRobot {
         }
     }
      
+         
+         
+     
      private void JoyPadDrive(double forward, double turn, boolean rawButton, boolean rawButton2){
         
         leftJag1.set(forward + turn);
@@ -106,7 +104,7 @@ public class Team2503RobotMain extends SimpleRobot {
         rightJag1.set(forward + turn);
         
         if(rawButton2){
-            ShooterJag2.set(0.5);
+            ShooterJag2.set(0.75);
         }
         else {
             ShooterJag2.set(0.0);
@@ -136,6 +134,10 @@ public class Team2503RobotMain extends SimpleRobot {
         sonarOnOff.set(false);
         
     }
-}
+
+    
+        }
+    
+
 
 
