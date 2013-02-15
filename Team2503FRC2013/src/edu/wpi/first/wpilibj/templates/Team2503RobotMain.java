@@ -20,7 +20,7 @@ public class Team2503RobotMain extends SimpleRobot {
     static final int JoystickNumber = 1; //This is the joystick # the driverstation must set the gamepad to
     
     static final int LeftJag1PWMSlot = 1;
-    static final int LeftJag2PWMSlot = 2;
+    
     static final int RightJag1PWMSlot = 4;
     static final int ShooterJag2PWMSlot = 3;
     static final int CenterJag1PWMSlot = 6;
@@ -46,8 +46,8 @@ public class Team2503RobotMain extends SimpleRobot {
     Jaguar leftJag1, leftJag2, rightJag1, ShooterJag2, centerJag1;
     Relay rel1; 
     //JoystickButton Button1;
-    DigitalOutput sonarOnOff;   //This is the object for controlling the output from the sidecar - set high to sample, low to turn off
-    AnalogChannel sonarDistance; //This is the object for reading the sensor from the analog breakout on the cRio.
+
+    MaxBotixHRLV mySonar;
     
     //ROBOT SYSTEMS AND VARIABLES END HERE
     
@@ -59,14 +59,15 @@ public class Team2503RobotMain extends SimpleRobot {
         gamePad = new Joystick(JoystickNumber);
         
         leftJag1 = new Jaguar(LeftJag1PWMSlot);
-        leftJag2 = new Jaguar(LeftJag2PWMSlot);
+        
         rightJag1 = new Jaguar(RightJag1PWMSlot);
         ShooterJag2 = new Jaguar(ShooterJag2PWMSlot);
         centerJag1 = new Jaguar(CenterJag1PWMSlot);
        
-   
-        sonarOnOff = new DigitalOutput(digitalOutputOnOffPort);
-        sonarDistance = new AnalogChannel(analogSensorPort);
+        mySonar = new MaxBotixHRLV(1, 1, 
+                                   2, 1,
+                                   new SonarInterfaceEnum(SonarInterfaceEnum.useAnalog));
+
     }        
 
    
@@ -99,10 +100,10 @@ public class Team2503RobotMain extends SimpleRobot {
      
      private void JoyPadDrive(double forward, double turn, boolean rawButton, boolean rawButton2){
         
-        leftJag1.set(forward + turn);
-        leftJag2.set(forward - turn);
-        rightJag1.set(forward + turn);
+        leftJag1.set(forward - turn);
         
+        rightJag1.set(forward + turn);
+       
         if(rawButton2){
             ShooterJag2.set(0.75);
         }
@@ -125,18 +126,10 @@ public class Team2503RobotMain extends SimpleRobot {
         JoyPadDrive(gamePad.getRawAxis(ForwardAxisleft), gamePad.getRawAxis(ForwardAxisright), gamePad.getRawButton(Button1), gamePad.getRawButton(button6));
     }
     
-    private void TurnSonarOn(){
-        
-        sonarOnOff.set(true);
-    }
-    
-    private void TurnSonarOff(){
-        sonarOnOff.set(false);
-        
-    }
+  
 
     
-        }
+}
     
 
 
