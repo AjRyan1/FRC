@@ -64,8 +64,8 @@ public class Team2503RobotMain extends SimpleRobot {
         ShooterJag2 = new Jaguar(ShooterJag2PWMSlot);
         centerJag1 = new Jaguar(CenterJag1PWMSlot);
        
-        mySonar = new MaxBotixHRLV(1, 1, 
-                                   2, 1,
+        mySonar = new MaxBotixHRLV(1, 1, //Create a sonar with analog voltage pin connected to channel 1, module 1 
+                                   2, 1, //Create a sonar with digital enable/disable connected to breakout channel GPIO 1
                                    new SonarInterfaceEnum(SonarInterfaceEnum.useAnalog));
 
     }        
@@ -73,6 +73,9 @@ public class Team2503RobotMain extends SimpleRobot {
    
     
     public void autonomous() {
+        
+        double distanceInFeet = mySonar.returnDistanceFeet();
+        //Do something here based on the distance in feet
         
 
     }
@@ -119,6 +122,7 @@ public class Team2503RobotMain extends SimpleRobot {
         else {
             centerJag1.set(0.0);
         }
+        
         
     }
     
