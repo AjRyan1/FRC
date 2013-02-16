@@ -77,9 +77,19 @@ public class Team2503RobotMain extends SimpleRobot {
         
         double distanceInFeet = mySonar.returnDistanceFeet();
         //Do something here based on the distance in feet
+      
         
+            
+           for (boolean i = 0 < 4; i;) {
+               ShooterJag2.set(0.6);
+               Timer.delay(2.0);
+               centerJag1.set(0.35);//shoot for a period of 1 frisbee which is like 1 sec or so 
+            Timer.delay(1.0);
+             //not sure how to make this repeat 5 times but i hope you get what I want it to do 
+           }
+        }
 
-    }
+    
     
         
         
@@ -104,21 +114,20 @@ public class Team2503RobotMain extends SimpleRobot {
      
      private void JoyPadDrive(double forward, double turn, boolean rawButton, boolean rawButton2){
         
-       // leftJag1.set(forward - turn);
+       leftJag1.set(forward - turn);
         
-       // rightJag1.set(forward + turn);
+        rightJag1.set(forward + turn);
        
         if(rawButton2){
-       //     ShooterJag2.set(0.75);
+           ShooterJag2.set(0.75);
         }
         else {
             ShooterJag2.set(0.0);
                     }    
 
-        if(rawButton){  //PRES THIS BUTTON TO TEST IF IT GOES STRAIGHT
-            //centerJag1.set(-0.35);
-            leftJag1.set(.8);
-            rightJag1.set(-.8);
+        if(rawButton){  
+            centerJag1.set(-0.35);
+          
         }
         
         else {
