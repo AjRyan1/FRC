@@ -2,8 +2,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.AnalogChannel; 
-import edu.wpi.first.wpilibj.DigitalOutput;
+
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
@@ -67,7 +66,9 @@ public class Team2503RobotMain extends SimpleRobot {
         mySonar = new MaxBotixHRLV(1, 1, //Create a sonar with analog voltage pin connected to channel 1, module 1 
                                    2, 1, //Create a sonar with digital enable/disable connected to breakout channel GPIO 1
                                    new SonarInterfaceEnum(SonarInterfaceEnum.useAnalog));
-
+        
+        
+        
     }        
 
    
@@ -103,24 +104,26 @@ public class Team2503RobotMain extends SimpleRobot {
      
      private void JoyPadDrive(double forward, double turn, boolean rawButton, boolean rawButton2){
         
-        leftJag1.set(forward - turn);
+       // leftJag1.set(forward - turn);
         
-        rightJag1.set(forward + turn);
+       // rightJag1.set(forward + turn);
        
         if(rawButton2){
-            ShooterJag2.set(0.75);
+       //     ShooterJag2.set(0.75);
         }
         else {
             ShooterJag2.set(0.0);
                     }    
 
-        if(rawButton){
-            centerJag1.set(-0.35);
-    
+        if(rawButton){  //PRES THIS BUTTON TO TEST IF IT GOES STRAIGHT
+            //centerJag1.set(-0.35);
+            leftJag1.set(.8);
+            rightJag1.set(-.8);
         }
         
         else {
-            centerJag1.set(0.0);
+            leftJag1.set(0);
+            rightJag1.set(0);
         }
         
         
