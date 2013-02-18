@@ -22,16 +22,16 @@ public class Team2503RobotMain extends SimpleRobot {
     
     static final int RightJag1PWMSlot = 4;
     static final int ShooterJag2PWMSlot = 3;
-    static final int CenterJag1PWMSlot = 6;
+    static final int LoaderJag1PWMSlot = 6;
     static final int ForwardAxisleft = 1;
     static final int ForwardAxisright = 4;
    // static final int JoystickButton1 = 5;
     static final int rel1kforward = 1;
-    
-    static final int Button1 = 2;
-    
+    static final int Button4 = 2;
+    static final int Button1 = 4;
+    static final int Button3 = 3;
     static final int button6 = 6;
-    
+   
     static final int analogSensorPort = 7; //For now, use port 1 on the analog module to receive analog data. goes to pin 3 on sensor
     static final int digitalOutputOnOffPort = 1; //use port 1 on the I/O section of the breakout to control on/off - goes to pin 4 on sensor
     
@@ -42,7 +42,7 @@ public class Team2503RobotMain extends SimpleRobot {
     //ROBOT SYSTEMS AND VARIABLES START HERE
     
     Joystick gamePad;
-    Jaguar leftJag1, leftJag2, rightJag1, ShooterJag2, centerJag1;
+    Jaguar leftJag1, leftJag2, rightJag1, ShooterJag2, LoaderJag1;
     Relay rel1; 
     //JoystickButton Button1;
 
@@ -61,7 +61,7 @@ public class Team2503RobotMain extends SimpleRobot {
         
         rightJag1 = new Jaguar(RightJag1PWMSlot);
         ShooterJag2 = new Jaguar(ShooterJag2PWMSlot);
-        centerJag1 = new Jaguar(CenterJag1PWMSlot);
+        LoaderJag1 = new Jaguar(LoaderJag1PWMSlot);
        
         mySonar = new MaxBotixHRLV(1, 1, //Create a sonar with analog voltage pin connected to channel 1, module 1 
                                    2, 1, //Create a sonar with digital enable/disable connected to breakout channel GPIO 1
@@ -75,19 +75,22 @@ public class Team2503RobotMain extends SimpleRobot {
     
     public void autonomous() {
         
-        double distanceInFeet = mySonar.returnDistanceFeet();
+        
+        
+        
+        double distanceInFeet = mySonar.returnDistanceFeet(); ;
         //Do something here based on the distance in feet
       
         
             
-           for (boolean i = 0 < 4; i;) {
+           
                ShooterJag2.set(0.6);
                Timer.delay(2.0);
-               centerJag1.set(0.35);//shoot for a period of 1 frisbee which is like 1 sec or so 
-            Timer.delay(1.0);
-             //not sure how to make this repeat 5 times but i hope you get what I want it to do 
+               LoaderJag1.set(0.35);
+         
+             
            }
-        }
+        
 
     
     
@@ -112,11 +115,10 @@ public class Team2503RobotMain extends SimpleRobot {
          
          
      
-     private void JoyPadDrive(double forward, double turn, boolean rawButton, boolean rawButton2){
+     private void JoyPadDrive( double turn, double rawAxis, boolean rawButton, boolean rawButton2, boolean rawButton3, boolean rawButton6){
         
-       leftJag1.set(forward - turn);
-        
-        rightJag1.set(forward + turn);
+       leftJag1.set( - turn);
+        rightJag1.set(+ turn);
        
         if(rawButton2){
            ShooterJag2.set(0.75);
@@ -126,20 +128,37 @@ public class Team2503RobotMain extends SimpleRobot {
                     }    
 
         if(rawButton){  
-            centerJag1.set(-0.35);
+            LoaderJag1.set(-0.35);
           
         }
         
         else {
-            leftJag1.set(0);
-            rightJag1.set(0);
+            LoaderJag1.set(0.0);
+        }
+        if(rawButton3){
+            rightJag1.set(-0.8);
+            leftJag1.set(0.8);
+            
         }
         
-        
+        else{
+         leftJag1.set(0);
+            rightJag1.set(0);
+     }
+    if(rawButton6){
+        leftJag1.set(-0.8);
+        rightJag1.set(0.8);
     }
+    else{
+        leftJag1.set(0.0);
+        rightJag1.set(0.0);
+    }
+     
+     }
+     
     
     private void TypicalJoyPadDrive(){
-        JoyPadDrive(gamePad.getRawAxis(ForwardAxisleft), gamePad.getRawAxis(ForwardAxisright), gamePad.getRawButton(Button1), gamePad.getRawButton(button6));
+        JoyPadDrive(gamePad.getRawAxis(ForwardAxisleft), gamePad.getRawAxis(ForwardAxisright), gamePad.getRawButton(Button1), gamePad.getRawButton(button6), gamePad.getRawButton(Button3), gamePad.getRawButton(Button4));
     }
     
   
