@@ -117,8 +117,8 @@ public class Team2503RobotMain extends SimpleRobot {
      
      private void JoyPadDrive( double turn, double rawAxis, boolean rawButton, boolean rawButton2, boolean rawButton3, boolean rawButton6){
         
-       leftJag1.set( - turn);
-        rightJag1.set(+ turn);
+       leftJag1.set(turn);
+        rightJag1.set(rawAxis);
        
         if(rawButton2){
            ShooterJag2.set(0.75);
